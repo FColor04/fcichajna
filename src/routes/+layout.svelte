@@ -56,7 +56,7 @@
 					<a href="/contact" on:click={() => drawerStore.close()}><i class="fa-solid fa-phone"></i> Kontakt</a>
 				</nav>
 				<LightSwitch></LightSwitch>
-				<button class="flex md:hidden" on:click={() => drawerStore.open(navDrawer)}>[=]</button>
+				<button class="flex md:hidden" on:click={() => drawerStore.open(navDrawer)}><i class="fa-solid fa-bars fa-2x"></i></button>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
