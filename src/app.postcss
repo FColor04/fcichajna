@@ -5,5 +5,21 @@
 
 html,
 body {
-	@apply overflow-hidden;
+	@apply h-full overflow-hidden;
+	background-size: cover;
+	background-attachment: fixed;
+	background-image: url($lib/images/background.jpg);
+}
+
+main > section {
+	&:nth-child(odd) {
+		@apply bg-surface-50-900-token my-8 p-8;
+	}
+	&:nth-child(even) {
+		@apply bg-surface-200-700-token my-8 p-8;
+	}
+}
+
+nav > a {
+	@apply cursor-pointer;
 }
