@@ -3,23 +3,59 @@
 @tailwind utilities;
 @tailwind variants;
 
-html,
-body {
-	@apply h-full overflow-hidden;
-	background-size: cover;
-	background-attachment: fixed;
-	background-image: url($lib/images/background.jpg);
-}
-
-main > section {
-	&:nth-child(odd) {
-		@apply bg-surface-50-900-token my-8 p-8;
+@layer base {
+	body, html {
+		@apply h-full overflow-hidden;
 	}
-	&:nth-child(even) {
-		@apply bg-surface-200-700-token my-8 p-8;
+	#background {
+		--background-image-variable: url($lib/images/background.jpg);
+		--background-opacity-variable: 1;
+		position: absolute;
+		top: 0; left: 0;
+		width: 100%; height: 100%;
+		background-size: cover;
+		background-attachment: fixed;
+		background-image: var(--background-image-variable);
+		opacity: var(--background-opacity-variable);
+		transition: opacity 1s;
 	}
 }
+@layer components {
+	main > div > section {
+		&:nth-child(odd) {
+			@apply bg-surface-50-900-token my-8 p-8;
+		}
 
-nav > a {
-	@apply cursor-pointer;
+		&:nth-child(even) {
+			@apply bg-surface-200-700-token my-8 p-8;
+		}
+	}
+
+	nav > a {
+		@apply cursor-pointer;
+	}
+
+	h1 {
+		@apply text-6xl font-extrabold;
+	}
+
+	h2 {
+		@apply text-5xl font-extrabold;
+	}
+
+	h3 {
+		@apply text-4xl font-bold;
+	}
+
+	h4 {
+		@apply text-3xl font-bold;
+	}
+
+	h5 {
+		@apply text-2xl font-bold;
+	}
+
+	h6 {
+		@apply text-xl font-bold;
+	}
 }

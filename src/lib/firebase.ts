@@ -9,6 +9,8 @@ import {
 } from '$env/static/public';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: PUBLIC_FIREBASE_API_KEY,
@@ -25,5 +27,6 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // Auth
 const firebaseAuth = getAuth(firebaseApp);
+const firestore = getFirestore();
 
-export { firebaseApp, firebaseAuth };
+export { firebaseApp, firebaseAuth, firestore };

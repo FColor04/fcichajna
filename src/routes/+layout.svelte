@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.postcss';
+	import { fly } from "svelte/transition";
 	import {
 		AppBar,
 		AppShell,
@@ -22,13 +23,16 @@
 	const navDrawer: DrawerSettings = { id: 'navigation' };
 	const drawerStore = getDrawerStore();
 
+	export let data;
+
 	onMount(() => {
 		const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
 
 		});
+		return unsubscribe;
 	});
 </script>
-
+<div id="background" />
 <Drawer>
 	{#if $drawerStore.id === 'navigation'}
 		<nav class="h-full w-full flex flex-col items-center justify-center text-2xl space-y-8">
@@ -42,7 +46,7 @@
 <Modal buttonTextCancel="Zamknij" />
 
 <!-- App Shell -->
-<AppShell regionPage="relative" slotPageHeader="sticky top-0 z-10 h-fit">
+<AppShell regionPage="relative" slotPageHeader="sticky top-0 z-[999] h-fit">
 	<svelte:fragment slot="pageHeader">
 		<!-- App Bar -->
 		<AppBar>
@@ -62,6 +66,10 @@
 	</svelte:fragment>
 	<!-- Page Route Content -->
 	<main class="sm:w-10/12 px-2 lg:px-8 mx-auto min-h-[90%]">
-		<slot />
+		{#key data.url}
+			<div in:fly={{ x: -200, duration: 200, delay: 200 }} out:fly={{ x: 200, duration: 200}}>
+				<slot />
+			</div>
+		{/key}
 	</main>
 </AppShell>

@@ -11,18 +11,18 @@ export const authUser = writable<AuthUser | undefined>(undefined);
 
 export const authHandlers = {
     signUp: async (email : string, password : string) => {
-        await createUserWithEmailAndPassword(firebaseAuth, email, password);
+        return await createUserWithEmailAndPassword(firebaseAuth, email, password);
     },
     signIn: async (email : string, password : string) => {
-        await signInWithEmailAndPassword(firebaseAuth, email, password);
+        return await signInWithEmailAndPassword(firebaseAuth, email, password);
     },
     signInPopup: async (provider : AuthProvider) => {
-        await signInWithPopup(firebaseAuth, provider);
+        return await signInWithPopup(firebaseAuth, provider);
     },
     signOut: async () => {
-        await signOut(firebaseAuth);
+        return await signOut(firebaseAuth);
     },
     resetPassword: async (email : string) => {
-        await sendPasswordResetEmail(firebaseAuth, email);
+        return await sendPasswordResetEmail(firebaseAuth, email);
     }
 }

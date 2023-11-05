@@ -47,7 +47,7 @@
     </button>
 </div>
 
-    <div class="p-4 grid grid-cols-6 gap-4">
+    <div class="p-4 grid grid-cols-4 lg:grid-cols-8 gap-2">
     {#each images as image, i}
         <button type="button" on:click={() => carouselThumbnail(i)}>
             <img
